@@ -1,0 +1,59 @@
+buildscript {
+    ext {
+        compileSdkVersion = 37
+        compileSdk = 37
+        targetSdkVersion = 36
+        targetSdk = 36
+        minSdkVersion = 24
+        minSdk = 24
+        buildToolsVersion = "37.0.0"
+        ndkVersion = "27.1.12297006"
+        kotlinVersion = "2.2.0"
+        REACT_NATIVE_NODE_MODULES_DIR = "${rootDir}/../node_modules/react-native"
+    }
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle")
+        classpath("com.facebook.react:react-native-gradle-plugin")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin")
+    }
+}
+
+allprojects {
+    ext {
+        compileSdkVersion = 37
+        compileSdk = 37
+        targetSdkVersion = 36
+        targetSdk = 36
+        minSdkVersion = 24
+        minSdk = 24
+        buildToolsVersion = "37.0.0"
+        ndkVersion = "27.1.12297006"
+        kotlinVersion = "2.2.0"
+        REACT_NATIVE_NODE_MODULES_DIR = "${rootDir}/../node_modules/react-native"
+    }
+
+    tasks.configureEach { task ->
+        if (task instanceof Exec) {
+            if (task.executable == "node") {
+                task.executable = "/usr/local/bin/node"
+            }
+            task.environment("PATH", "/usr/local/bin:" + (System.getenv("PATH") ?: ""))
+        }
+    }
+}
+
+subprojects {
+    plugins.withId("com.facebook.react") {
+        try {
+            react {
+                nodeExecutableAndArgs = ["/usr/local/bin/node"]
+            }
+        } catch (Throwable ignored) {}
+    }
+}
+
+apply plugin: "com.facebook.react.rootproject"

@@ -1,0 +1,24 @@
+::ffff:192.168.1.40 - - [30/Sep/2026 10:11:03] "HEAD /app-debug.apk HTTP/1.1" 200 -
+::ffff:192.168.1.36 - - [30/Sep/2026 10:16:38] "GET / HTTP/1.1" 200 -
+::ffff:192.168.1.36 - - [30/Sep/2026 10:16:38] code 404, message File not found
+::ffff:192.168.1.36 - - [30/Sep/2026 10:16:38] "GET /favicon.ico HTTP/1.1" 404 -
+::ffff:192.168.1.36 - - [30/Sep/2026 10:16:42] "GET /app-debug.apk HTTP/1.1" 200 -
+----------------------------------------
+Exception occurred during processing of request from ('::ffff:192.168.1.36', 47192, 0, 0)
+Traceback (most recent call last):
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 683, in process_request_thread
+    self.finish_request(request, client_address)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 360, in finish_request
+    self.RequestHandlerClass(request, client_address, self)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 660, in __init__
+    super().__init__(*args, **kwargs)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socketserver.py", line 747, in __init__
+    self.handle()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 434, in handle
+    self.handle_one_request()
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/http/server.py", line 402, in handle_one_request
+    self.raw_requestline = self.rfile.readline(65537)
+  File "/Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/socket.py", line 704, in readinto
+    return self._sock.recv_into(b)
+ConnectionResetError: [Errno 54] Connection reset by peer
+----------------------------------------
